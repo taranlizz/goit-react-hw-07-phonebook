@@ -25,7 +25,6 @@ export const ContactForm = () => {
   const numberInputID = nanoid();
 
   const contacts = useSelector(selectContacts);
-  const dispatch = useDispatch();
 
   const checkIsPresent = contact => {
     const isPresent = savedContact =>
