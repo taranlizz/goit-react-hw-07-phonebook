@@ -3,8 +3,7 @@ import * as Yup from 'yup';
 import { nanoid } from 'nanoid';
 import { Button, ErrorDiv, FormEl, Input, Label } from './ContactForm.styled';
 import { useSelector, useDispatch } from 'react-redux';
-import { addContact } from 'redux/contactsSlice';
-import { getContacts } from 'redux/contactsSlice';
+import { selectContacts } from 'redux/selectors';
 
 const contactSchema = Yup.object().shape({
   name: Yup.string()
@@ -25,7 +24,7 @@ export const ContactForm = () => {
   const nameInputID = nanoid();
   const numberInputID = nanoid();
 
-  const contacts = useSelector(getContacts);
+  const contacts = useSelector(selectContacts);
   const dispatch = useDispatch();
 
   const checkIsPresent = contact => {
@@ -44,7 +43,6 @@ export const ContactForm = () => {
         if (checkIsPresent(contact)) {
           return alert(`${contact.name} is already in contacts.`);
         }
-        dispatch(addContact(contact));
         actions.resetForm();
       }}
     >

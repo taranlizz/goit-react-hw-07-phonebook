@@ -1,10 +1,10 @@
 import { Input, Label } from './ContactFilter.styled';
 import { useDispatch, useSelector } from 'react-redux';
-import { getFilterValue } from 'redux/filterSlice';
+import { selectFilterValue } from 'redux/selectors';
 import { changeFilter } from 'redux/filterSlice';
 
 export const ContactFilter = () => {
-  const filter = useSelector(getFilterValue);
+  const filter = useSelector(selectFilterValue);
   const dispatch = useDispatch();
   return (
     <Label>
